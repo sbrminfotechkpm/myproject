@@ -1,0 +1,106 @@
+<html>
+<head>
+<title>McDonalds</title>
+<script language="javascript">
+function pick(f1)
+{
+  var z="";
+  for(j=0;j<3;j++)
+  {
+     for(i=0;i<f1.elements[j].length;i++)
+     {
+       if(f1.elements[j][i].selected)
+       {
+         var y=f1.elements[j].options[i].value;
+         z=z+"\n"+y;
+         f1.elements[3].value=z;
+       }
+     }
+  }
+
+   m=z;
+}
+
+function call(f1)
+{
+  var d=0;
+  for(j=0;j<3;j++)
+  {
+     for(i=0;i<f1.elements[j].length;i++)
+     {
+       if(f1.elements[j][i].selected)
+       {
+         var y=f1.elements[j].options[i].value;
+         s=new String(y);
+         var a=s.indexOf(">");
+         var b=s.substring(a+1,a+3);
+         c=parseInt(b);
+         d=d+c;
+       }
+     }
+  }
+
+p="Total cost of the selected items=" +d;
+m=m+"\n"+p;
+f1.elements[3].value=m;
+}
+
+function clr(f1)
+{
+  f1.elements[3].value="";
+}
+</script>
+</head>
+<body>
+<h2>
+<center>
+Welcome to the world famous fast food center McDonalds
+</center>
+
+<form name="f1">Select the menu items of your choice <br><br>
+<table>
+<tr valign=top> 
+<td>Major Dishes: <br>
+<select name="s1" MULTIPLE onBlur="pick(this.form)">
+<option value="MC Burger->80" SELECTED>Mc Burger
+<option value="Fish Fillets->70" >Fish Fillets
+<option value="Chicken Burger->60">Chicken Burger
+<option value="Veg. Burger->45">Veg. Burger
+</select><br><br>
+</td><td></td><td></td>
+
+<td>Starters: <br>
+<select name="s2" MULTIPLE onBlur="pick(this.form)">
+<option value="French Fries->40" >French Fries
+<option value="Nuggets->50" >Nuggets
+<option value="Hash Browns->55">Hash Browns
+<option value="Mc Aloo Tikki->65">Mc Aloo Tikki
+</select><br><br>
+</td><td></td><td></td>
+
+<td>Miscellaneous: <br>
+<select name="s3"  onBlur="pick(this.form)">
+<option value="" >Check these out"
+<option value="Milkshake->35" >Milkshakes
+<option value="Soft drinks->20">Soft Drinks
+<option value="Softy->25">Softy
+</select><br><br>
+</td><td></td><td></td>
+</tr></table><br>
+
+<table><tr valign=top><td>
+The Items selected from the Menu are:
+<textarea name="tai" rows=10 cols=50></textarea><br><br>
+</td>
+<td></td>
+<td></td>
+<br>
+<td>
+<input type="button" value="Total Cost" onClick="call(this.form)">
+<input type="button" value="Clear" onClick="clr(this.form)">
+</td>
+</tr>
+</table>
+</form>
+</body>
+</html>
